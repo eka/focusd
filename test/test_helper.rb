@@ -1,6 +1,9 @@
 ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
+# required by RubyMine test reporter
+require 'minitest/reporters'
+MiniTest::Reporters.use!
 
 class ActiveSupport::TestCase
   ActiveRecord::Migration.check_pending!

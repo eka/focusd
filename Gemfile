@@ -15,6 +15,8 @@ group :assets do
   # gem 'therubyracer', platforms: :ruby
 
   gem 'uglifier', '>= 1.0.3'
+
+  gem 'bootstrap-sass', '~> 2.3.1.0'
 end
 
 gem 'jquery-rails'
@@ -37,3 +39,15 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # To use debugger
 # gem 'debugger'
 gem 'devise', :github => 'plataformatec/devise', :branch => 'rails4'
+
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
+
+group :test do
+  gem "minitest-rails", "~> 0.9.1"
+  gem "minitest-rails-capybara", "~> 0.9.0"
+  gem "minitest-reporters", "~> 0.14.8"
+end
+

@@ -1,0 +1,2 @@
+class ContextsController < ApplicationController
+end
