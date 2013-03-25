@@ -43,6 +43,9 @@ gem 'devise', :github => 'plataformatec/devise', :branch => 'rails4'
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+  gem "guard-minitest"
+  gem 'terminal-notifier-guard'
+  gem "rb-fsevent"
 end
 
 group :test do

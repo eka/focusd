@@ -10,9 +10,11 @@ describe ContextsController do
     assert_redirected_to new_user_session_url
   end
 
-  it "must be success when logged in" do
+  it "must redirect to new task when logged in" do
     sign_in @user
     get :index
-    response.status.must_equal 200
+    assert_redirected_to new_context_task_path @user.contexts.first.id
   end
+
+
 end

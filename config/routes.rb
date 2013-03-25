@@ -1,7 +1,8 @@
 Focusd::Application.routes.draw do
-  resources :tasks
 
-  resources :contexts
+  resources :contexts do
+    resources :tasks
+  end
 
   get "home/index"
   devise_for :users, path_names: {sign_in: "login", sign_out: "logout"}
