@@ -49,5 +49,6 @@ group :test do
   gem "minitest-rails", "~> 0.9.1"
   gem "minitest-rails-capybara", "~> 0.9.0"
   gem "minitest-reporters", "~> 0.14.8"
+  gem "factory_girl_rails", "~> 4.2.1"
 end
 
