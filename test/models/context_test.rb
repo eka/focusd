@@ -1,7 +1,11 @@
-require 'test_helper'
+require "test_helper"
 
-class ContextTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+describe Context do
+  before do
+    @context = create(:context)
+  end
+
+  it "must be valid" do
+    @context.valid?.must_equal true
+  end
 end

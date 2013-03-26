@@ -3,9 +3,9 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable, :validatable,
   # :recoverable and :omniauthable
+  has_many :contexts
   devise :database_authenticatable, :registerable, :rememberable, :trackable
   validates :email, presence: true, email: true, uniqueness: true
-  has_many :contexts
   after_create :create_default_context
 
   private

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130320111133) do
+ActiveRecord::Schema.define(version: 20130326105425) do
 
   create_table "contexts", force: true do |t|
     t.string   "name"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20130320111133) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "tasks", ["position"], name: "index_tasks_on_position"
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

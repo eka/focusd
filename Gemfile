@@ -40,6 +40,8 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 # gem 'debugger'
 gem 'devise', :github => 'plataformatec/devise', :branch => 'rails4'
 
+gem "acts_as_list", "~> 0.2.0"
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
