@@ -10,7 +10,7 @@ describe User do
   end
 
   it "should not accept duplicate email" do
-    proc { create(:user) }.must_raise(ActiveRecord::RecordInvalid)
+    proc { create(:user, email: @user.email) }.must_raise(ActiveRecord::RecordInvalid)
   end
 
   it "must accept valid password" do
