@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
   def crash
     raise 'krishna'
   end
+
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
 end

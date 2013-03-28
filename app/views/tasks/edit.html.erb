@@ -1,0 +1,13 @@
+<div class="row">
+  <%= form_for @task, url: {action: "update"} do |f| %>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+
+      <%= f.label :notes %>
+      <%= f.text_area :notes %>
+      <p>
+        <%= f.submit "Save" %>
+      </p>
+
+  <% end %>
+</div>
