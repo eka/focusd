@@ -11,11 +11,9 @@ class TasksController < ApplicationController
   end
 
   def edit
-    not_found unless @task
   end
 
   def update
-    not_found unless @task
     @task.update_attributes(task_params)
     redirect_to edit_context_task_url context_id: @context.id, id: @task.id
   end
@@ -27,6 +25,7 @@ class TasksController < ApplicationController
 
   def get_task
     @task = @context ? @context.tasks.find_by_id(params[:id]) : nil
+    not_found unless @task
   end
 
   def task_params
