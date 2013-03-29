@@ -1,0 +1,15 @@
+<%= form_for [@context, @task] do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :notes %>
+    <%= f.text_area :notes %>
+    <br>
+    <%= f.submit "Save" %>
+<% end %>
+
+<% if @task.persisted? %>
+    <%= button_to "Defer", action: :defer %>
+    <%= button_to "Delete", [@context, @task], method: :delete %>
+    <%= button_to "New", new_context_task_path(@context), method: :get %>
+<% end %>

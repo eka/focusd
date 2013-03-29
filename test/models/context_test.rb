@@ -8,4 +8,14 @@ describe Context do
   it "must be valid" do
     @context.valid?.must_equal true
   end
+
+  it "must destroy all dependent tasks when deleted" do
+    task_one = @context.tasks.create(name: 'foo', notes: 'bar')
+    task_two = @context.tasks.create(name: 'foo2', notes: 'bar2')
+    task_one.destroyed?.must_equal false
+    task_two.destroyed?.must_equal false
+    @context.destroy
+    task_one.destroyed?.must_equal true
+    task_two.destroyed?.must_equal true
+  end
 end

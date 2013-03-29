@@ -1,7 +1,9 @@
 Focusd::Application.routes.draw do
 
   resources :contexts do
-    resources :tasks
+    resources :tasks do
+      post :defer, on: :member
+    end
   end
 
   get "home/index"
