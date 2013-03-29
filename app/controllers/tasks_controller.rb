@@ -7,7 +7,7 @@ class TasksController < ApplicationController
   end
 
   def new
-    @task = @context.tasks.build
+    @task = @context.tasks.new
   end
 
   def show
@@ -23,8 +23,13 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = @context.tasks.create(task_params)
-    redirect_to edit_context_task_url context_id: @context.id, id: @task.id
+    @task = @context.tasks.new(task_params)
+
+    if @task.save
+      redirect_to edit_context_task_url context_id: @context.id, id: @task.id
+    else
+      render action: 'new'
+    end
   end
 
   def defer
