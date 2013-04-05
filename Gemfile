@@ -18,7 +18,8 @@ group :assets do
 
   gem 'bootstrap-sass', '~> 2.3.1.0'
 
-  gem "batman-rails"
+  gem 'angularjs-rails'
+
 end
 
 gem 'jquery-rails'
@@ -40,7 +41,7 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use debugger
 # gem 'debugger'
-gem 'devise', :github => 'plataformatec/devise', :branch => 'rails4'
+gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
 
 gem "acts_as_list", "~> 0.2.0"
 
