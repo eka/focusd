@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
   before_action :get_context
   before_action :get_task, only: [:edit, :show, :update, :destroy, :defer]
-  respond_to :json
 
   def index
     respond_with @context.tasks
