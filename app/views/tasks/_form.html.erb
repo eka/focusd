@@ -1,28 +1,49 @@
-<%= form_for [@context, @task] do |f| %>
+<div class="row">
 
-    <% if @task.errors.any? %>
-        <div id="error_explanation">
-          <h2><%= pluralize(@task.errors.count, "error") %></h2>
+  <%= simple_form_for [@context, @task] do |f| %>
 
-          <ul>
-            <% @task.errors.full_messages.each do |msg| %>
-                <li><%= msg %></li>
-            <% end %>
-          </ul>
-        </div>
-    <% end %>
+      <%= render partial: 'errors' %>
+      <div class="controls offset2">
+        <%= f.input :name, input_html: { class: 'span8 edit' }, placeholder: "name..." %>
+      </div>
+      <div class="controls offset2">
+      <%= f.input :notes, input_html: { class: 'span8 edit', rows: 10 }, placeholder: "notes..." %>
+      </div>
+      <!--<div class="controls offset2">-->
+        <!--<%= f.submit 'Save', class: "btn btn-small btn-success" %>-->
+      <!--</div>-->
+  <% end %>
+  <div class="controls offset2">
+  <% if @task.persisted? %>
+    <button class="btn btn-small btn-success">Save</button>
+    <%= button_to "Done", action: :defer, class: "btn btn-small btn-warning" %>
+    <%= button_to "Defer", action: :defer, class: "btn btn-small btn-warning" %>
+    <%= button_to "Delete", [@context, @task], method: :delete, class: "btn btn-small btn-warning" %>
+    <%= button_to "New", new_context_task_path(@context), method: :get, class: "btn btn-small btn-warning" %>
+  <% end %>
+  </div>
+</div>
 
-    <%= f.label :name %>
-    <%= f.text_field :name %>
 
-    <%= f.label :notes %>
-    <%= f.text_area :notes %>
-    <br>
-    <%= f.submit "Save" %>
-<% end %>
 
-<% if @task.persisted? %>
-    <%= button_to "Defer", action: :defer %>
-    <%= button_to "Delete", [@context, @task], method: :delete %>
-    <%= button_to "New", new_context_task_path(@context), method: :get %>
-<% end %>
+<hr>
+
+
+<div class="row">
+
+  <form id="task">
+    <div class="controls offset2">
+      <input class="span8 edit" type="text" maxlength="52" placeholder="name...">
+    </div>
+    <div class="controls offset2">
+      <textarea class="span8 edit" name="notes" id="" rows="10" placeholder="notes..."></textarea>
+    </div>
+  </form>
+  <div class="controls offset2">
+    <button class="btn btn-small btn-success">Done</button>
+    <button class="btn btn-small btn-danger">Delete</button>
+    <button class="btn btn-small btn-warning">Defer</button>
+    <button class="btn btn-small btn-primary">New</button>
+  </div>
+
+</div>

@@ -8,6 +8,10 @@ class User < ActiveRecord::Base
   validates :email, presence: true, email: true, uniqueness: true
   after_create :create_default_context
 
+  def current_context
+    contexts.find_by_id(current_context_id)
+  end
+
   private
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :remember_me)

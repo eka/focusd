@@ -1,16 +1,17 @@
 <div class="row">
   <form id="task">
     <div class="controls offset2">
-      <input class="span8 edit" type="text" maxlength="52" placeholder="name...">
+      <input data-bind="currentTask.name" class="span8 edit" type="text" maxlength="52" placeholder="name...">
     </div>
     <div class="controls offset2">
-      <textarea class="span8 edit" name="notes" id="" rows="10" placeholder="notes..."></textarea>
+      <textarea data-bind="currentTask.notes" class="span8 edit" name="notes" id="" rows="10" placeholder="notes..."></textarea>
     </div>
   </form>
   <div class="controls offset2">
-    <button class="btn btn-small btn-success">Done</button>
+    <button data-event-click="controllers.stack.update" class="btn btn-small btn-success">Save</button>
+    <button class="btn btn-small btn-info">Done</button>
     <button class="btn btn-small btn-danger">Delete</button>
-    <button class="btn btn-small btn-warning">Defer</button>
+    <button data-event-click="controllers.stack.defer" class="btn btn-small btn-warning">Defer</button>
     <button class="btn btn-small btn-primary">New</button>
   </div>
 

@@ -2,9 +2,12 @@ Focusd::Application.routes.draw do
 
   resources :contexts do
     resources :tasks do
-      post :defer, on: :member
+      put :defer, on: :member, format: 'json'
+      get :current, on: :collection, format: 'json'
     end
+    get :current, on: :collection, format: 'json'
   end
+
 
   get "home/index"
 

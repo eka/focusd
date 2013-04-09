@@ -1,12 +1,16 @@
 class ContextsController < ApplicationController
   before_action :authenticate_user!
+  respond_to :json
 
   def index
-    context = current_user.contexts.find_by_name('main')
-    if context.tasks.empty?
-      redirect_to new_context_task_path context
-    else
-      redirect_to edit_context_task_path context, context.tasks.first
-    end
+    respond_with current_user.contexts
+  end
+
+  def show
+    respond_with current_user.contexts.find_by_id(params[:id])
+  end
+
+  def current
+    respond_with current_user.current_context
   end
 end

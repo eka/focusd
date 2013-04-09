@@ -1,17 +1,19 @@
 class TasksController < ApplicationController
   before_action :get_context
   before_action :get_task, only: [:edit, :show, :update, :destroy, :defer]
+  respond_to :json
 
   def index
-    redirect_to new_context_task_url context_id: @context.id
+    respond_with @context.tasks
   end
 
   def new
     @task = @context.tasks.new
+    respond_with @task
   end
 
   def show
-    redirect_to edit_context_task_url context_id: @context.id, id: @task.id
+    respond_with @task
   end
 
   def edit
@@ -19,7 +21,7 @@ class TasksController < ApplicationController
 
   def update
     @task.update_attributes(task_params)
-    redirect_to edit_context_task_url context_id: @context.id, id: @task.id
+    respond_with @task
   end
 
   def create
@@ -34,7 +36,7 @@ class TasksController < ApplicationController
 
   def defer
     @task.move_to_bottom
-    redirect_to edit_context_task_url context_id: @context.id, id: @context.tasks.first.id
+    respond_with @context.tasks.first
   end
 
   def destroy
@@ -46,14 +48,18 @@ class TasksController < ApplicationController
     end
   end
 
-  private
-    def get_context
-      @context = current_user.contexts.find_by_id(params[:context_id])
-    end
+  def current
+    respond_with @context.tasks.first
+  end
 
+  private
     def get_task
       @task = @context ? @context.tasks.find_by_id(params[:id]) : nil
       not_found unless @task
+    end
+
+    def get_context
+      @context = current_user.contexts.find_by_id(params[:context_id])
     end
 
     def task_params
