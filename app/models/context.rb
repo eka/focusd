@@ -4,4 +4,8 @@ class Context < ActiveRecord::Base
   has_many :tasks, -> { order "position" }, dependent: :destroy
 
   validates :name, presence: true
+
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
 end
