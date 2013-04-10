@@ -1,26 +1,45 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!
   before_action :get_context
-  before_action :get_task, only: [:edit, :show, :update, :destroy, :defer]
+  before_action :get_task
 
   def index
-    respond_with @context.tasks
+    @task = @context.tasks.first || @context.tasks.new
   end
 
   def new
     @task = @context.tasks.new
-    respond_with @task
+    redirect_to tasks_path
   end
 
   def show
-    respond_with @task
+
   end
 
   def edit
+    redirect_to tasks_path
   end
 
   def update
-    @task.update_attributes(task_params)
-    respond_with @task
+    if @task.update_attributes(task_params)
+      form_action = params[:form_action].downcase
+      case form_action
+        when 'defer'
+          @task.move_to_bottom
+        when 'done'
+          puts 'not implemented yet'
+        when 'delete'
+          @task.destroy
+        when 'new'
+          @task = @context.tasks.new
+          render "new" and return
+        when 'next'
+          @task.move_lower
+      end
+      redirect_to tasks_path
+    else
+      render "index"
+    end
   end
 
   def create
@@ -53,12 +72,11 @@ class TasksController < ApplicationController
 
   private
     def get_task
-      @task = @context ? @context.tasks.find_by_id(params[:id]) : nil
-      not_found unless @task
+      @task = @context ? @context.tasks.first : nil
     end
 
     def get_context
-      @context = current_user.contexts.find_by_id(params[:context_id])
+      @context = current_user.current_context
     end
 
     def task_params

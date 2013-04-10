@@ -1,49 +1,34 @@
-<div class="row">
-
+<div class="row task">
   <%= simple_form_for [@context, @task] do |f| %>
 
-      <%= render partial: 'errors' %>
       <div class="controls offset2">
-        <%= f.input :name, input_html: { class: 'span8 edit' }, placeholder: "name..." %>
+        <%= f.input :name, input_html: { class: 'span8 edit' }, placeholder: "name...", label: false %>
       </div>
       <div class="controls offset2">
-      <%= f.input :notes, input_html: { class: 'span8 edit', rows: 10 }, placeholder: "notes..." %>
+        <%= f.input :notes, input_html: { class: 'span8 edit', rows: 10 }, placeholder: "notes...", label: false %>
       </div>
-      <!--<div class="controls offset2">-->
-        <!--<%= f.submit 'Save', class: "btn btn-small btn-success" %>-->
-      <!--</div>-->
+      <div class="controls offset2">
+        <%= button_tag(type: 'submit', class: "btn btn-small", value: "Save", name: "form_action", title: "Save", "data-toggle" => "tooltip") do %>
+            <i class="icon-save"></i>
+        <% end %>
+
+        <% if @task.persisted? %>
+            <%= button_tag(type: 'submit', class: "btn btn-small", value: "Defer", name: "form_action", title: "Defer") do %>
+                <i class="icon-circle-arrow-down"></i>
+            <% end %>
+            <%= button_tag(type: 'submit', class: "btn btn-small", value: "Next", name: "form_action", title: "Next") do %>
+                <i class="icon-circle-arrow-right"></i>
+            <% end %>
+            <%= button_tag(type: 'submit', class: "btn btn-small", value: "Delete", name: "form_action", title: "Delete") do %>
+                <i class="icon-trash"></i>
+            <% end %>
+            <%= button_tag(type: 'submit', class: "btn btn-small", value: "Done", name: "form_action", title: "Done") do %>
+                <i class="icon-check"></i>
+            <% end %>
+            <%= button_tag(type: 'submit', class: "btn btn-small", value: "New", name: "form_action", title: "New") do %>
+                <i class="icon-plus"></i>
+            <% end %>
+        <% end %>
+      </div>
   <% end %>
-  <div class="controls offset2">
-  <% if @task.persisted? %>
-    <button class="btn btn-small btn-success">Save</button>
-    <%= button_to "Done", action: :defer, class: "btn btn-small btn-warning" %>
-    <%= button_to "Defer", action: :defer, class: "btn btn-small btn-warning" %>
-    <%= button_to "Delete", [@context, @task], method: :delete, class: "btn btn-small btn-warning" %>
-    <%= button_to "New", new_context_task_path(@context), method: :get, class: "btn btn-small btn-warning" %>
-  <% end %>
-  </div>
-</div>
-
-
-
-<hr>
-
-
-<div class="row">
-
-  <form id="task">
-    <div class="controls offset2">
-      <input class="span8 edit" type="text" maxlength="52" placeholder="name...">
-    </div>
-    <div class="controls offset2">
-      <textarea class="span8 edit" name="notes" id="" rows="10" placeholder="notes..."></textarea>
-    </div>
-  </form>
-  <div class="controls offset2">
-    <button class="btn btn-small btn-success">Done</button>
-    <button class="btn btn-small btn-danger">Delete</button>
-    <button class="btn btn-small btn-warning">Defer</button>
-    <button class="btn btn-small btn-primary">New</button>
-  </div>
-
 </div>

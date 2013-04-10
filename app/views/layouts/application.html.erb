@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title><%= yield :title %></title>
-  <%= stylesheet_link_tag    "application", media: "all" %>
-  <%= javascript_include_tag "application" %>
+
+  <% if @task && @task.id %>
+  <title>Focusd<%= ": #{truncate(@task.name.parameterize)}" %></title>
+  <% else %>
+  <title>Focusd</title>
+  <% end %>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
   <link href='http://fonts.googleapis.com/css?family=Cousine' rel='stylesheet' type='text/css'>
 </head>
