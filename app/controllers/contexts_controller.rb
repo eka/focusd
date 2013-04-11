@@ -16,7 +16,8 @@ class ContextsController < ApplicationController
   end
 
   def create
-    current_user.contexts.create(context_params)
+    new_context = current_user.contexts.create(context_params)
+    current_user.update_attribute(:current_context_id, new_context.id)
     redirect_to tasks_path
   end
 
