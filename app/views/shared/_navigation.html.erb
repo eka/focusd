@@ -2,8 +2,26 @@
   <div class="navbar navbar-inverse">
     <div class="navbar-inner">
       <ul class="nav">
-        <li>
-          <a href="#"><%= "Context: #{@context.name}" if @context %></a>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle">
+            <%= "#{current_user.current_context.name}" if current_user %>
+            <b class="caret"></b>
+          </a>
+          <% if current_user %>
+          <ul class="dropdown-menu" aria-labelledby="drop1" role="menu">
+            <% current_user.contexts.where.not(name: @context.name).each do |context| %>
+            <li role="presentation">
+              <%= link_to "#{context.name}", current_context_path(context) %>
+            </li>
+            <% end %>
+            <li class="divider" role="presentation"></li>
+            <li role="presentation">
+              <%= simple_form_for current_user.contexts.new do |f| %>
+                <%= f.input :name, label: false, placeholder: "name..." %>
+              <% end %>
+            </li>
+          </ul>
+          <% end %>
         </li>
       </ul>
       <ul class="nav pull-right">

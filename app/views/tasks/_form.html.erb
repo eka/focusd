@@ -2,7 +2,7 @@
   <%= simple_form_for [@context, @task] do |f| %>
 
       <div class="controls offset2">
-        <%= f.input :name, input_html: { class: 'span8 edit' }, placeholder: "name...", label: false %>
+        <%= f.input :name, input_html: { class: 'span8 edit', autofocus: 'autofocus' }, placeholder: "name...", label: false %>
       </div>
       <div class="controls offset2">
         <%= f.input :notes, input_html: { class: 'span8 edit', rows: 10 }, placeholder: "notes...", label: false %>
@@ -28,7 +28,12 @@
             <%= button_tag(type: 'submit', class: "btn btn-small", value: "New", name: "form_action", title: "New") do %>
                 <i class="icon-plus"></i>
             <% end %>
+        <% else %>
+            <%= link_to tasks_path, class: "btn btn-small", title: "Discard" do%>
+                <i class="icon-remove"></i>
+            <% end %>
         <% end %>
+
       </div>
   <% end %>
 </div>

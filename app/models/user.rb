@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
   end
 
   def create_default_context
-    contexts.create(name: Context::DEFAULT_CONTEXT_NAME)
+    new_context = contexts.create(name: Context::DEFAULT_CONTEXT_NAME)
+    update_attribute(:current_context_id, new_context.id)
   end
 end

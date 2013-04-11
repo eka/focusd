@@ -3,7 +3,7 @@ class Context < ActiveRecord::Base
   belongs_to :user
   has_many :tasks, -> { order "position" }, dependent: :destroy
 
-  validates :name, presence: true
+  validates :name, presence: true, :uniqueness => true
 
   def to_param
     "#{id}-#{name.parameterize}"

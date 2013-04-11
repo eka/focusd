@@ -1,6 +1,5 @@
 class ContextsController < ApplicationController
   before_action :authenticate_user!
-  respond_to :json
 
   def index
     respond_with current_user.contexts
@@ -11,6 +10,18 @@ class ContextsController < ApplicationController
   end
 
   def current
-    respond_with current_user.current_context
+    context = current_user.contexts.find_by_id(params[:id])
+    current_user.update_attribute(:current_context_id, context.id)
+    redirect_to tasks_path
+  end
+
+  def create
+    current_user.contexts.create(context_params)
+    redirect_to tasks_path
+  end
+
+  private
+  def context_params
+    params.require(:context).permit(:name)
   end
 end

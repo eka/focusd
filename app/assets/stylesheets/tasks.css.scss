@@ -18,3 +18,17 @@
   background-color: lightgrey;
   border-radius: 4px;
 }
+
+.dropdown-menu {
+  form#new_context {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  input#context_name {
+    margin: 0 5px 0 5px;
+    width: 160px;
+
+  }
+
+}
