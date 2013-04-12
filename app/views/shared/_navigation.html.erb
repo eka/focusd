@@ -18,6 +18,9 @@
             <li role="presentation">
               <%= simple_form_for current_user.contexts.new do |f| %>
                 <%= f.input :name, label: false, placeholder: "name..." %>
+                  <%= button_tag(type: 'submit', class: "btn", style: "display: none", value: "Next", name: "form_action", title: "Next") do %>
+                    Create context
+                  <% end %>
               <% end %>
             </li>
           </ul>
@@ -27,7 +30,7 @@
       <ul class="nav pull-right">
         <% if user_signed_in? && current_user.current_context != current_user.default_context %>
         <li>
-          <%= link_to "Delete", current_user.current_context, method: :delete, confirm: "Are you sure? (all the context's tasks will be deleted too)" %>
+          <%= link_to "Delete", current_user.current_context, method: :delete, confirm: "Are you sure? (all the context's tasks will be deleted too)", id: "delete_context", title: "Delete context" %>
         </li>
         <% end %>
         <li>
