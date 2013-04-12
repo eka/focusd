@@ -12,6 +12,20 @@ class User < ActiveRecord::Base
     contexts.find_by_id(current_context_id)
   end
 
+  def default_context
+    contexts.find_by_name(Context::DEFAULT_CONTEXT_NAME)
+  end
+
+  def destroy_context(context_id)
+    if contexts.count > 1
+      contexts.find(context_id).destroy
+      update_attribute(:current_context_id, contexts.first.id)
+      true
+    else
+      false
+    end
+  end
+
   private
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, :remember_me)

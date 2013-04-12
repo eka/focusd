@@ -2,7 +2,7 @@ class ContextsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    respond_with current_user.contexts
+    redirect_to tasks_path
   end
 
   def show
@@ -19,6 +19,15 @@ class ContextsController < ApplicationController
     new_context = current_user.contexts.create(context_params)
     current_user.update_attribute(:current_context_id, new_context.id)
     redirect_to tasks_path
+  end
+
+  def destroy
+    if current_user.destroy_context(params[:id])
+      options = { notice: "Context deleted" }
+    else
+      options = { alert: "You can't delete the last context" }
+    end
+    redirect_to tasks_path, options
   end
 
   private

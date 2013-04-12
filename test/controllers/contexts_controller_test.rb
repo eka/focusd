@@ -7,19 +7,25 @@ describe ContextsController do
 
   it "must return redirect to login when no session" do
     get :index
-    assert_redirected_to new_user_session_url
+    assert_redirected_to new_user_session_path
   end
 
   it "must redirect to new task when logged in" do
     sign_in @user
     get :index
-    assert_redirected_to new_context_task_path @user.contexts.first.id
+    assert_redirected_to tasks_path
   end
 
-  it "must redirect to the current task when logged in" do
+  it "must destroy any context but last" do
     sign_in @user
-    task = @user.contexts.first.tasks.create(name: "First Task")
-    get :index
-    assert_redirected_to edit_context_task_path @user.contexts.first.id, task.id
+    main = @user.default_context
+    @user.contexts.count.must_equal 1
+    delete :destroy, id: main.id
+    @user.contexts.count.must_equal 1
+    new_context = @user.contexts.create(name: 'new')
+    @user.contexts.count.must_equal 2
+    delete :destroy, id: new_context
+    @user.contexts.count.must_equal 1
+    assert_redirected_to tasks_path
   end
 end

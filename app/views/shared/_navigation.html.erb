@@ -25,6 +25,11 @@
         </li>
       </ul>
       <ul class="nav pull-right">
+        <% if user_signed_in? && current_user.current_context != current_user.default_context %>
+        <li>
+          <%= link_to "Delete", current_user.current_context, method: :delete, confirm: "Are you sure? (all the context's tasks will be deleted too)" %>
+        </li>
+        <% end %>
         <li>
             <% if user_signed_in? %>
             <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
