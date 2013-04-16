@@ -17,10 +17,7 @@
             <li class="divider" role="presentation"></li>
             <li role="presentation">
               <%= simple_form_for current_user.contexts.new do |f| %>
-                <%= f.input :name, label: false, placeholder: "name..." %>
-                  <%= button_tag(type: 'submit', class: "btn", style: "display: none", value: "Next", name: "form_action", title: "Next") do %>
-                    Create context
-                  <% end %>
+                  <%= f.input :name, label: false, placeholder: "new context" %>
               <% end %>
             </li>
           </ul>

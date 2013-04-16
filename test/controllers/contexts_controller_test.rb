@@ -28,4 +28,20 @@ describe ContextsController do
     @user.contexts.count.must_equal 1
     assert_redirected_to tasks_path
   end
+
+  it "must create a new context" do
+    sign_in @user
+    @user.contexts.count.must_equal 1
+    post :create, context: {name: "foo"}
+    assert_redirected_to tasks_path
+  end
+
+  it "must not create a context with existing name" do
+    sign_in @user
+    @user.contexts.count.must_equal 1
+    post :create, context: {name: @user.current_context.name}
+    assert_redirected_to tasks_path
+    @user.reload
+    @user.current_context.wont_be_nil
+  end
 end

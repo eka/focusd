@@ -16,9 +16,14 @@ class ContextsController < ApplicationController
   end
 
   def create
-    new_context = current_user.contexts.create(context_params)
-    current_user.update_attribute(:current_context_id, new_context.id)
-    redirect_to tasks_path
+    new_context = current_user.contexts.new(context_params)
+    if new_context.save
+      current_user.update_attribute(:current_context_id, new_context.id) unless new_context.nil?
+      options = { notice: "Context succesfully created" }
+    else
+      options = { alert: "Can't create context with the name of #{context_params[:name]}" }
+    end
+    redirect_to tasks_path, options
   end
 
   def destroy

@@ -18,4 +18,9 @@ describe Context do
     task_one.destroyed?.must_equal true
     task_two.destroyed?.must_equal true
   end
+
+  it "must not create a new context with existing name" do
+    new_context = Context.create(name: @context.name)
+    new_context.valid?.must_equal false
+  end
 end
