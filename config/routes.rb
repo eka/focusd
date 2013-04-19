@@ -1,5 +1,7 @@
 Focusd::Application.routes.draw do
 
+  resources :task_logs
+
   resources :contexts do
     get :current, on: :member
     resources :tasks

@@ -26,8 +26,6 @@ class TasksController < ApplicationController
       case form_action
         when 'defer'
           @task.move_to_bottom
-        when 'done'
-          puts 'not implemented yet'
         when 'delete'
           @task.destroy
         when 'new'
@@ -35,6 +33,8 @@ class TasksController < ApplicationController
           render "new" and return
         when 'next'
           @task.move_lower
+        when 'done'
+          @task.done
       end
       redirect_to tasks_path
     else

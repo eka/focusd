@@ -11,11 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130405232523) do
+ActiveRecord::Schema.define(version: 20130418110038) do
 
   create_table "contexts", force: true do |t|
     t.string   "name"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "task_logs", force: true do |t|
+    t.integer  "user_id"
+    t.string   "name"
+    t.text     "notes"
+    t.string   "context"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

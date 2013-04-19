@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable, :validatable,
   # :recoverable and :omniauthable
   has_many :contexts
+  has_many :task_logs
   devise :database_authenticatable, :registerable, :rememberable, :trackable
   validates :email, presence: true, email: true, uniqueness: true
   after_create :create_default_context

@@ -16,4 +16,6 @@
 /tmp
 bin
 .idea
+.rvmrctags
 .rvmrc
+tags
