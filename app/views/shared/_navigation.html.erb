@@ -3,13 +3,15 @@
     <div class="navbar-inner">
       <ul class="nav">
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle">
-            <%= "#{current_user.current_context.name}" if current_user %>
-            <b class="caret"></b>
-          </a>
-          <% if current_user %>
+          <% if @context %>
+            <a href="#" class="dropdown-toggle">
+              <%= "#{@context.name}" %>
+              <b class="caret"></b>
+            </a>
+          <% end %>
+          <% if @contexts %>
           <ul class="dropdown-menu" aria-labelledby="drop1" role="menu">
-            <% current_user.contexts.where.not(name: @context.name).each do |context| %>
+            <% @contexts.where.not(name: @context.name).each do |context| %>
             <li role="presentation">
               <%= link_to "#{context.name}", current_context_path(context) %>
             </li>
@@ -25,7 +27,7 @@
         </li>
       </ul>
       <ul class="nav pull-right">
-        <% if user_signed_in? && current_user.current_context != current_user.default_context %>
+        <% if @context %>
         <li>
           <%= link_to "Delete", current_user.current_context, method: :delete, confirm: "Are you sure? (all the context's tasks will be deleted too)", id: "delete_context", title: "Delete context" %>
         </li>

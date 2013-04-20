@@ -82,4 +82,8 @@ class TasksController < ApplicationController
     def task_params
       params.require(:task).permit(:name, :notes)
     end
+
+    def get_contexts
+      @contexts = curent_user.contexts
+    end
 end

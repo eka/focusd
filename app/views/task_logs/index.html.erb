@@ -1,33 +1,28 @@
-<h1>Listing task_logs</h1>
+<div class="row">
+   <table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Notes</th>
+        <th>Context</th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Name</th>
-      <th>Notes</th>
-      <th>Context</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
+    <tbody>
+      <% @task_logs.each do |task_log| %>
+      <tr>
+        <td><%= truncate(task_log.name, length: 12) %></td>
+        <td><%= truncate(task_log.notes, length: 80) %></td>
+        <td><%= task_log.context %></td>
+        <td><%= link_to 'Show', task_log %></td>
+        <td><%= link_to 'Edit', edit_task_log_path(task_log) %></td>
+        <td><%= link_to 'Destroy', task_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
 
-  <tbody>
-    <% @task_logs.each do |task_log| %>
-    <tr>
-      <td><%= task_log.user_id %></td>
-      <td><%= task_log.name %></td>
-      <td><%= task_log.notes %></td>
-      <td><%= task_log.context %></td>
-      <td><%= link_to 'Show', task_log %></td>
-      <td><%= link_to 'Edit', edit_task_log_path(task_log) %></td>
-      <td><%= link_to 'Destroy', task_log, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br />
-
-<%= link_to 'New Task log', new_task_log_path %>
