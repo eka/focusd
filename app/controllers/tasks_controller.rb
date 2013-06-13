@@ -2,6 +2,7 @@ class TasksController < ApplicationController
   before_action :authenticate_user!
   before_action :get_context
   before_action :get_task
+  before_action :get_contexts
 
   def index
     @task = @context.tasks.first || @context.tasks.new
@@ -84,6 +85,6 @@ class TasksController < ApplicationController
     end
 
     def get_contexts
-      @contexts = curent_user.contexts
+      @contexts = current_user.contexts
     end
 end
