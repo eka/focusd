@@ -2,6 +2,7 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path("../../config/environment", __FILE__)
 require "rails/test_help"
 require "minitest/rails"
+require "capybara/rspec/matchers"
 require "minitest/rails/capybara"
 require "minitest/reporter"
 MiniTest::Reporters.use! MiniTest::Reporters::ProgressReporter.new

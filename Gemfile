@@ -1,26 +1,24 @@
 source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.0.0.beta1'
+gem 'rails', '4.0.0'
 
 gem 'sqlite3'
 
 # Gems used only for assets and not required
 # in production environments by default.
-group :assets do
-  gem 'sass-rails',   '~> 4.0.0.beta1'
-  gem 'coffee-rails', '~> 4.0.0.beta1'
+gem 'sass-rails',   '~> 4.0.0'
+gem 'coffee-rails', '~> 4.0.0'
 
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', platforms: :ruby
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', platforms: :ruby
 
-  gem 'uglifier', '>= 1.0.3'
+gem 'uglifier'
 
-  gem 'bootstrap-sass', '~> 2.3.1.0'
+gem 'bootstrap-sass', '~> 2.3.2.2'
 
-  gem 'font-awesome-sass-rails'
+gem 'font-awesome-sass-rails'
 
-end
 
 gem 'jquery-rails'
 
@@ -29,10 +27,10 @@ gem 'turbolinks'
 gem 'jquery-turbolinks'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
-gem 'jbuilder', '~> 1.0.1'
+gem 'jbuilder'
 
 # To use ActiveModel has_secure_password
-gem 'bcrypt-ruby', '~> 3.0.0'
+gem 'bcrypt-ruby'
 
 # Use unicorn as the app server
 # gem 'unicorn'
@@ -42,9 +40,10 @@ gem 'bcrypt-ruby', '~> 3.0.0'
 
 # To use debugger
 # gem 'debugger'
-gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
+# gem 'devise', github: 'plataformatec/devise', branch: 'rails4'
+gem 'devise'
 
-gem "acts_as_list", "~> 0.2.0"
+gem "acts_as_list"
 
 gem 'simple_form', github: 'plataformatec/simple_form', branch: 'master'
 
@@ -57,9 +56,9 @@ group :development do
 end
 
 group :test do
-  gem "minitest-rails", "~> 0.9.1"
-  gem "minitest-rails-capybara", "~> 0.9.0"
-  gem "minitest-reporters", "~> 0.14.8"
-  gem "factory_girl_rails", "~> 4.2.1"
+  gem "minitest-rails"
+  gem "minitest-rails-capybara"
+  gem "minitest-reporters"
+  gem "factory_girl_rails"
 end
 

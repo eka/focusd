@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
-# Your secret key for verifying the integrity of signed cookies.
+# Your secret key is used for verifying the integrity of signed cookies.
 # If you change this key, all old signed cookies will become invalid!
 
 # Make sure the secret is at least 30 characters and all random,
@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Focusd::Application.config.secret_key_base = '6759443485e85a7b0211842915b0fe6c8e95620c166ea3be77705b267302fa6e0dae08a66a0239caa40b7f54bc43cf135de90ae6142dc1f0a63e73c1fc04af0a'
+Focusd::Application.config.secret_key_base = 'af7d21ede0892d2556b0dda744378f828b7e65a0d4e167421032a21b6d9ad9a419990aef839e062925d790f26cbe552c241b0b959f7db9231dfc1c7b004ec816'
