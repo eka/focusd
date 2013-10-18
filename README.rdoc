@@ -1,28 +1,14 @@
-== README
+== Focusd - Uni-Tasker task management app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+this app allows you to concentrate on 1 task at a time.
 
-Things you may want to cover:
+Dependencies:
 
-* Ruby version
+Rails4
+Ruby2
+(Read the Gemfile)
 
-* System dependencies
+*Note: remember to change the secret key you dumb ass!
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+(C) Esteban Feldman
+License MIT

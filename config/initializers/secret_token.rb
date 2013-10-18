@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-Focusd::Application.config.secret_key_base = 'af7d21ede0892d2556b0dda744378f828b7e65a0d4e167421032a21b6d9ad9a419990aef839e062925d790f26cbe552c241b0b959f7db9231dfc1c7b004ec816'
+Focusd::Application.config.secret_key_base = 'NoneOfYourBusinessm6a4wpe07ji()0s74y3#r%wg^a3nks7k^*8tx=$9q_t6d+k#&6'
