@@ -1,4 +1,4 @@
-== Focusd - Uni-Tasker task management app
+== Focusd - Uni-Task task management app
 
 this app allows you to concentrate on 1 task at a time.
 
