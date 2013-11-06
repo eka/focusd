@@ -8,7 +8,7 @@ Rails4
 Ruby2
 (Read the Gemfile)
 
-*Note: remember to change the secret key you dumb ass!
+*Note: remember to change the secret key !
 
 (C) Esteban Feldman
 License MIT
