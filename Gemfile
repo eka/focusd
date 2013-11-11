@@ -53,6 +53,7 @@ group :development do
   gem "guard-minitest"
   gem 'terminal-notifier-guard'
   gem "rb-fsevent"
+  gem "pry-nav"
 end
 
 group :test do
