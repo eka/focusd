@@ -47,6 +47,10 @@ gem "acts_as_list"
 
 gem 'simple_form', github: 'plataformatec/simple_form', branch: 'master'
 
+# postgresql
+gem 'pg'
+gem 'thin'
+
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
